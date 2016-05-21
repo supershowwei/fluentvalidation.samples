@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac.Extras.DynamicProxy2;
 
 namespace FluentValidationSamples
 {
+    [Intercept(typeof(ValidationInterceptor))]
     public class OrderService : IOrderService
     {
         private OrderDataAccess orderDataAccess = new OrderDataAccess();
@@ -26,6 +28,7 @@ namespace FluentValidationSamples
             return result;
         }
 
+        [IgnoreInterception(typeof(ValidationInterceptor))]
         public OrderDeletingResult Delete(Order order)
         {
             throw new NotImplementedException();

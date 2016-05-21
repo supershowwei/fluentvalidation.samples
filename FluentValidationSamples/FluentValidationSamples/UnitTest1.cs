@@ -1,4 +1,5 @@
 ﻿using System;
+using Autofac;
 using FluentValidation.TestHelper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,10 +9,12 @@ namespace FluentValidationSamples
     public class UnitTest1
     {
         [TestMethod]
-        public void Test_AddOrder_with_Decorator()
+        public void Test_AddOrder_with_AOP()
         {
-            var orderService = new OrderServiceWithValidation(new OrderService());
-            var order = new Order() { CustomerName = "" };
+            AutoConfig.Config();
+
+            var orderService = AutoConfig.Container.Resolve<IOrderService>();
+            var order = new Order();
 
             var result = orderService.AddOrder(order);
 
