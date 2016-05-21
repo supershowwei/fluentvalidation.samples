@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,8 +54,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IOrderService.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderCreatingResult.cs" />
+    <Compile Include="OrderDataAccess.cs" />
+    <Compile Include="OrderDeletingResult.cs" />
+    <Compile Include="OrderService.cs" />
+    <Compile Include="OrderServiceWithValidation.cs" />
+    <Compile Include="OrderServiceWrapper.cs" />
+    <Compile Include="OrderValidator.cs" />
+    <Compile Include="ServiceResult.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
