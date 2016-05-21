@@ -1,3 +1,3 @@
 # fluentvalidation.samples
 
-- FluentValidation with Decorator
+- FluentValidation with AOP
