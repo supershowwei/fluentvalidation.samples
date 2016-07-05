@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using FluentValidation;
@@ -13,7 +10,7 @@ namespace FluentValidationSamples
     {
         public IValidator GetValidator(Type type)
         {
-            Type validatorType = typeof(IValidator<>).MakeGenericType(typeof(Order));
+            Type validatorType = typeof(IValidator<>).MakeGenericType(type);
 
             var serviceTypes =
                 AutoConfig.Container.ComponentRegistry.Registrations
