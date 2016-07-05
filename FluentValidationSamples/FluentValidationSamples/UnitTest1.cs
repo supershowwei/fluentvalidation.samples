@@ -11,9 +11,9 @@ namespace FluentValidationSamples
         [TestMethod]
         public void Test_AddOrder_with_AOP()
         {
-            AutoConfig.Config();
+            AutofacConfig.Config();
 
-            var orderService = AutoConfig.Container.Resolve<IOrderService>();
+            var orderService = AutofacConfig.Container.Resolve<IOrderService>();
             var order = new Order();
 
             var result = orderService.AddOrder(order);

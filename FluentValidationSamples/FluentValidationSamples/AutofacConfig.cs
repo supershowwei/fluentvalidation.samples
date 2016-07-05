@@ -9,7 +9,7 @@ using FluentValidation;
 
 namespace FluentValidationSamples
 {
-    public class AutoConfig
+    public class AutofacConfig
     {
         public static IContainer Container { get; private set; }
 

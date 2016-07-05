@@ -13,13 +13,13 @@ namespace FluentValidationSamples
             Type validatorType = typeof(IValidator<>).MakeGenericType(type);
 
             var serviceTypes =
-                AutoConfig.Container.ComponentRegistry.Registrations
+                AutofacConfig.Container.ComponentRegistry.Registrations
                     .SelectMany(r => r.Services.OfType<TypedService>())
                     .Select(s => s.ServiceType);
 
             if (serviceTypes.Contains(validatorType))
             {
-                return AutoConfig.Container.Resolve(validatorType) as IValidator;
+                return AutofacConfig.Container.Resolve(validatorType) as IValidator;
             }
             else
             {

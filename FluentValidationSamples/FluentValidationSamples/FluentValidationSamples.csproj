@@ -66,7 +66,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AutoConfig.cs" />
+    <Compile Include="AutofacConfig.cs" />
     <Compile Include="IgnoreInterceptionAttribute.cs" />
     <Compile Include="IOrderService.cs" />
     <Compile Include="Order.cs" />
