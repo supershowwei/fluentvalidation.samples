@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Castle.DynamicProxy;
 using FluentValidation;
 using FluentValidation.Results;
@@ -22,7 +19,7 @@ namespace FluentValidationSamples
             }
             else
             {
-                var validationResult = ValidateArguments(invocation.Arguments);
+                var validationResult = ValidateArguments(invocation.Method.GetParameters(), invocation.Arguments);
 
                 if (validationResult.IsValid)
                 {
@@ -39,18 +36,18 @@ namespace FluentValidationSamples
             }
         }
 
-        private ValidationResult ValidateArguments(object[] arguments)
+        private ValidationResult ValidateArguments(ParameterInfo[] parameters, object[] arguments)
         {
             var validationResult = new ValidationResult();
 
-            foreach (var arg in arguments)
+            for (int index = 0; index < parameters.Length; index++)
             {
-                var validator = ValidatorFactory.GetValidator(arg.GetType());
+                var validator = ValidatorFactory.GetValidator(parameters[index].ParameterType);
 
                 validationResult =
                     validator == null
                         ? new ValidationResult()
-                        : validator.Validate(arg);
+                        : validator.Validate(arguments[index]);
 
                 if (validationResult.IsValid == false)
                 {
